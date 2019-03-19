@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Projects\dotNet\Components\Grammophone.Tasks\Grammophone.Tasks.xml</DocumentationFile>
+    <DocumentationFile>Grammophone.Tasks.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Projects\dotNet\Components\Grammophone.Tasks\Grammophone.Tasks.xml</DocumentationFile>
+    <DocumentationFile>Grammophone.Tasks.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

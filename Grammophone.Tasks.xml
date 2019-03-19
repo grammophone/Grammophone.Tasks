@@ -14,7 +14,7 @@
             <summary>
             Create.
             </summary>
-            <param name="attachTasksToParent">If true, the tasks are attached to the parent task where the scheduler lives, else tey are independent.</param>
+            <param name="attachTasksToParent">If true, the tasks are attached to the parent task where the scheduler lives, else they are independent.</param>
         </member>
         <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.#ctor(System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskContinuationOptions)">
             <summary>
@@ -28,30 +28,51 @@
             Create with default task creation and continuation options.
             </summary>
         </member>
-        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueTask(`0,System.Action)">
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueAction(`0,System.Action)">
             <summary>
-            Queue a task for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Queue an action for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
             Use the returned task to attach additional exception handling.
             </summary>
             <param name="channel">The channel for which to queue the task.</param>
-            <param name="action">The action to be executed in the task.</param>
+            <param name="action">The action to be executed.</param>
             <returns>Returns the task created and queued.</returns>
             <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="action"/> is null.</exception>
         </member>
-        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueTask(`0,System.Action,System.Threading.CancellationToken)">
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueAction(`0,System.Action,System.Threading.CancellationToken)">
             <summary>
-            Queue a task for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Queue an action for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
             Use the returned task to attach additional exception handling.
             </summary>
             <param name="channel">The channel for which to queue the task.</param>
-            <param name="action">The action to be executed in the task.</param>
+            <param name="action">The action to be executed.</param>
             <param name="cancellationToken">The cancellation token to be assigned to the new task.</param>
             <returns>Returns the task created and queued.</returns>
             <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="action"/> is null.</exception>
         </member>
-        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueTask``1(`0,System.Func{``0})">
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueAsyncAction(`0,System.Func{System.Threading.Tasks.Task})">
             <summary>
-            Queue a task returning a value for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Queue an asynchronous action for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Use the returned task to attach additional exception handling.
+            </summary>
+            <param name="channel">The channel for which to queue the task.</param>
+            <param name="asyncAction">The asynchronous action to be executed.</param>
+            <returns>Returns the task created and queued.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="asyncAction"/> is null.</exception>
+        </member>
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueAsyncAction(`0,System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <summary>
+            Queue an asynchronous action for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Use the returned task to attach additional exception handling.
+            </summary>
+            <param name="channel">The channel for which to queue the task.</param>
+            <param name="asyncAction">The asynchronous action to be executed.</param>
+            <param name="cancellationToken">The cancellation token to be assigned to the new task.</param>
+            <returns>Returns the task created and queued.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="asyncAction"/> is null.</exception>
+        </member>
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueFunction``1(`0,System.Func{``0})">
+            <summary>
+            Queue a function returning a value for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
             Use the returned task to attach additional exception handling or to obtain the returned value.
             </summary>
             <param name="channel">The channel for which to queue the task.</param>
@@ -59,9 +80,9 @@
             <returns>Returns the task created and queued, whose <see cref="P:System.Threading.Tasks.Task`1.Result"/> will hold the result of the function.</returns>
             <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="function"/> is null.</exception>
         </member>
-        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueTask``1(`0,System.Func{``0},System.Threading.CancellationToken)">
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueFunction``1(`0,System.Func{``0},System.Threading.CancellationToken)">
             <summary>
-            Queue a task returning a value for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Queue a function returning a value for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
             Use the returned task to attach additional exception handling or to obtain the returned value.
             </summary>
             <param name="channel">The channel for which to queue the task.</param>
@@ -69,6 +90,27 @@
             <param name="cancellationToken">The cancellation token to be assigned to the new task.</param>
             <returns>Returns the task created and queued, whose <see cref="P:System.Threading.Tasks.Task`1.Result"/> will hold the result of the function.</returns>
             <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="function"/> is null.</exception>
+        </member>
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueAsyncFunction``1(`0,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Queue an asynchronous function returning a value for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Use the returned task to attach additional exception handling or to obtain the returned value.
+            </summary>
+            <param name="channel">The channel for which to queue the task.</param>
+            <param name="asyncFunction">The function to be executed in the task.</param>
+            <returns>Returns the task created and queued, whose <see cref="P:System.Threading.Tasks.Task`1.Result"/> will hold the result of the function.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="asyncFunction"/> is null.</exception>
+        </member>
+        <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.QueueAsyncFunction``1(`0,System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
+            <summary>
+            Queue an asynchronous function returning a value for a channel. Exceptions are handled in <see cref="M:Grammophone.Tasks.ChannelsTaskQueuer`1.HandleException(`0,System.Exception)"/>.
+            Use the returned task to attach additional exception handling or to obtain the returned value.
+            </summary>
+            <param name="channel">The channel for which to queue the task.</param>
+            <param name="asyncFunction">The function to be executed in the task.</param>
+            <param name="cancellationToken">The cancellation token to be assigned to the new task.</param>
+            <returns>Returns the task created and queued, whose <see cref="P:System.Threading.Tasks.Task`1.Result"/> will hold the result of the function.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="channel"/> or <paramref name="asyncFunction"/> is null.</exception>
         </member>
         <member name="M:Grammophone.Tasks.ChannelsTaskQueuer`1.WhenAll">
             <summary>
