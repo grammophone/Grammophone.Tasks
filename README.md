@@ -1,5 +1,5 @@
 # Grammophone.Tasks
-This .NET Standard 2.0 library contains utlilties built on Task Parallel Library.
+This .NET Standard 2.0 library contains utlilties built on Task Parallel Library. The library has no dependencies.
 
 ### `ChannelsTaskQueuer<C>`
 This class maintains separate task queues per individual channels and appends tasks to them.
