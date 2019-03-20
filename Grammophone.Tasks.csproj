@@ -2,14 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>Grammophone</Company>
+    <Product>Grammophone.Tasks</Product>
+    <Copyright>Copyright © Grammophone 2019</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>Grammophone.Tasks.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Grammophone.Tasks.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>Grammophone.Tasks.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Grammophone.Tasks.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".git" />
+    <None Remove=".gitignore" />
+  </ItemGroup>
 
 </Project>
